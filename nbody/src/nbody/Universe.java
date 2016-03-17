@@ -27,6 +27,11 @@ public class Universe {
     private final Body[] orbs;       // array of N bodies
 
     // read universe from file
+
+    /**
+     *
+     * @param fileName
+     */
     public Universe(String fileName) {
 
         // the authors' version reads from standard input
@@ -44,11 +49,15 @@ public class Universe {
         // read in the N bodies
         orbs = new Body[N];
         for (int i = 0; i < N; i++) {
+            //read location
             double rx = inputStream.readDouble();
             double ry = inputStream.readDouble();
+            //read velocity
             double vx = inputStream.readDouble();
             double vy = inputStream.readDouble();
+            //read mass
             double mass = inputStream.readDouble();
+            //determine position and speed
             double[] position = {rx, ry};
             double[] velocity = {vx, vy};
             Vector r = new Vector(position);
@@ -58,11 +67,17 @@ public class Universe {
     } // Universe()
 
     // increment time by dt units, assume forces are constant in given interval
+
+    /**
+     *
+     * @param dt
+     */
     public void increaseTime(double dt) {
 
         // initialize the forces to zero
         Vector[] f = new Vector[N];
         for (int i = 0; i < N; i++) {
+            //create new force
             f[i] = new Vector(new double[2]);
         } // for
 
@@ -70,6 +85,7 @@ public class Universe {
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
                 if (i != j) {
+                    //determine force for each orb
                     f[i] = f[i].plus(orbs[i].forceFrom(orbs[j]));
                 } // if
             } // for
@@ -77,24 +93,40 @@ public class Universe {
 
         // move the bodies
         for (int i = 0; i < N; i++) {
+            //change orb position
             orbs[i].move(f[i], dt);
         } // for
     } // increaseTime( double )
 
     // draw the N bodies
+
+    /**
+     *
+     */
     public void draw() {
         for (int i = 0; i < N; i++) {
+            //draw each orb
             orbs[i].draw();
         } // for
     } // draw()
 
     // client to simulate a universe
+
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
+        //new universe for orbs to exist in
         Universe newton = new Universe( args[1] );
         double dt = Double.parseDouble(args[0]);
+        //infinite loop
         while (true) {
+            //clear everything for next draw
             StdDraw.clear();
+            //go to next draw
             newton.increaseTime(dt);
+            //draw
             newton.draw();
             StdDraw.show(10);
         } // while

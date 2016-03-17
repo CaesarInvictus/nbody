@@ -31,12 +31,22 @@ public class Vector {
     private final double[] data;       // array of vector's components
 
     // create the zero vector of length N
+
+    /**
+     *
+     * @param N
+     */
     public Vector(int N) {
         this.N = N;
         this.data = new double[N];
     } // Vector( int )
 
     // create a vector from an array
+
+    /**
+     *
+     * @param data
+     */
     public Vector(double[] data) {
         N = data.length;
 
@@ -63,30 +73,56 @@ public class Vector {
     }
 */
     // return the length of the vector
+
+    /**
+     *
+     * @return
+     */
     public int length() {
         return N;
     } // length()
 
     // return the inner product of this Vector a and b
+
+    /**
+     *
+     * @param that
+     * @return
+     */
     public double dot(Vector that) {
         if (this.N != that.N) {
+            //if you exit window
             throw new RuntimeException("Dimensions don't agree");
         } // if
         
         double sum = 0.0;
         for (int i = 0; i < N; i++)
+            //vector for each direction
             sum = sum + (this.data[i] * that.data[i]);
         return sum;
     } // dot( Vector )
 
     // return the Euclidean norm of this Vector
+
+    /**
+     *
+     * @return
+     */
     public double magnitude() {
+        //sorcery
         return Math.sqrt(this.dot(this));
     } // magnitude()
 
     // return the Euclidean distance between this and that
+
+    /**
+     *
+     * @param that
+     * @return
+     */
     public double distanceTo(Vector that) {
         if (this.N != that.N) {
+            //if you exit window
             throw new RuntimeException("Dimensions don't agree");
         } // if
         
@@ -94,8 +130,15 @@ public class Vector {
     } // distanceTo( Vector )
 
     // return this + that
+
+    /**
+     *
+     * @param that
+     * @return
+     */
     public Vector plus(Vector that) {
         if (this.N != that.N) {
+            //if you exit window
             throw new RuntimeException("Dimensions don't agree");
         } // if
         
@@ -106,6 +149,12 @@ public class Vector {
     } // plus( Vector )
 
     // return this - that
+
+    /**
+     *
+     * @param that
+     * @return
+     */
     public Vector minus(Vector that) {
         if (this.N != that.N) {
             throw new RuntimeException("Dimensions don't agree");
@@ -118,11 +167,23 @@ public class Vector {
     } // minus( Vector )
 
     // return the corresponding coordinate
+
+    /**
+     *
+     * @param i
+     * @return
+     */
     public double cartesian(int i) {
         return data[i];
     } // cartesian( int )
 
     // create and return a new object whose value is (this * factor)
+
+    /**
+     *
+     * @param factor
+     * @return
+     */
     public Vector times(double factor) {
         Vector c = new Vector(N);
         for (int i = 0; i < N; i++)
@@ -132,6 +193,11 @@ public class Vector {
 
 
     // return the corresponding unit vector
+
+    /**
+     *
+     * @return
+     */
     public Vector direction() {
         if (this.magnitude() == 0.0) {
             throw new RuntimeException("Zero-vector has no direction");
@@ -155,13 +221,19 @@ public class Vector {
 
 
     // test client
+
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
+        //set positions
         double[] xdata = { 1.0, 2.0, 3.0, 4.0 };
         double[] ydata = { 5.0, 2.0, 4.0, 1.0 };
-
+        //create vectors
         Vector x = new Vector(xdata);
         Vector y = new Vector(ydata);
-
+        //print various computations of vectors to test success
         System.out.println("x        =  " + x);
         System.out.println("y        =  " + y);
         System.out.println("x + y    =  " + x.plus(y));
