@@ -18,7 +18,7 @@ package nbody;
  *  x + y    =  (6.0, 4.0, 7.0, 5.0)
  *  10x      =  (10.0, 20.0, 30.0, 40.0)
  *  |x|      =  5.477225575051661
- *  <x, y>   =  25.0
+ *  x, y   =  25.0
  *  |x - y|  =  5.0990195135927845
  *
  *  Note that java.util.Vector is an unrelated Java library class.

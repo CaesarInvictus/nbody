@@ -30,12 +30,6 @@ public class Body {
         this.mass = mass;
     } // Body( Vector, Vector, double )
     //function to change position of orbs
-
-    /**
-     *
-     * @param f
-     * @param dt
-     */
     public void move(Vector f, double dt) {
         //find forces on orb
         Vector a = f.times(1/mass);
@@ -62,10 +56,6 @@ public class Body {
         return delta.direction().times(F);
     } // forceFrom( Body )
 
-    /**
-     *
-     * 
-     */
     public void draw() {
         //draw a circle
         StdDraw.setPenRadius(0.025);
@@ -73,11 +63,6 @@ public class Body {
     } // draw()
 
     // this method is only needed if you want to change the size of the bodies
-
-    /**
-     *
-     * @param penRadius
-     */
     public void draw(double penRadius) {
         //draw a circle for given radius
         StdDraw.setPenRadius(penRadius);
