@@ -33,7 +33,7 @@ public class Body {
     public void move(Vector f, double dt) {
         //find forces on orb
         Vector a = f.times(1/mass);
-        //set orb new position
+        //set orb new vector
         v = v.plus(a.times(dt));
         r = r.plus(v.times(dt));
     } // move( Vector, double )
@@ -49,16 +49,16 @@ public class Body {
         double G = 6.67e-11;
         //change in velocity based on gravity
         Vector delta = b.r.minus(a.r);
-        //distance traveled based on change in velocity
+        //distance between objects
         double dist = delta.magnitude();
-        //total force (mass * acceleration)
+        //total force (F=G(m1*m2)/r^2)
         double F = (G * a.mass * b.mass) / (dist * dist);
         return delta.direction().times(F);
     } // forceFrom( Body )
 
     public void draw() {
         //draw a circle
-        StdDraw.setPenRadius(0.025);
+        StdDraw.setPenRadius(0.01);
         StdDraw.point(r.cartesian(0), r.cartesian(1));
     } // draw()
 
