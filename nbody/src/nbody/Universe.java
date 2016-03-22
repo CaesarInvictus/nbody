@@ -123,7 +123,7 @@ public class Universe {
         //infinite loop
         while (true) {
             //clear everything for next draw
-            //StdDraw.clear();
+            StdDraw.clear();
             //go to next draw
             newton.increaseTime(dt);
             //draw

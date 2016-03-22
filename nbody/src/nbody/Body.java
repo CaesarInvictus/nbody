@@ -58,7 +58,7 @@ public class Body {
 
     public void draw() {
         //draw a circle
-        StdDraw.setPenRadius(0.01);
+        StdDraw.setPenRadius(0.005);
         StdDraw.point(r.cartesian(0), r.cartesian(1));
     } // draw()
 
